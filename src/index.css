@@ -1,3 +1,251 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root{
+    --header-height: 3.5rem;
+    --black-clr: #232323;
+    --red-clr: #B13126;
+    --grey-clr: #C3C3D5;
+    --white-clr: #FBF8F3;
+    --gradient: linear-gradient( 90deg, var(--black-clr) 0%, var(--black-clr) 100%);
+    --body-font: 'Montserrat', sans-serif;
+    --biggest-fs: 2.25rem;
+    --h1-fs: 1.5rem;
+    --h2-fs: 1.25rem;
+    --h3-fs: 1rem;
+    --normal-fs: .938rem;
+    --small-fs: .813rem;
+    --smaller-fs: .75rem;
+    --regular-fw: 400;
+    --medium-fw: 500;
+    --bold-fw: 700;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+  }
+  @media screen and (min-width: 968px) {
+    :root{
+      --biggest-fs: 4rem;
+      --h1-fs: 2.25rem;
+      --h2-fs: 1.5rem;
+      --h3-fs: 1.25rem;
+      --normal-fs: 1rem;
+      --small-fs: .875rem;
+      --smaller-fs: .813rem;
+    }
+  }
+}
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* cursor: none; */
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  font-family: var(--body-font);
+  font-size: var(--normal-fs);
+  background-color: var(--white-clr);
+  color: var(--black-clr);
+}
+h1, h2, h3{
+  font-weight: var(--bold-fw);
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+button,
+input{
+  font-family: var(--body-font);
+  outline: none;
+  border: none;
+}
+button{
+  cursor: pointer;
+}
+::-webkit-scrollbar{
+  width: .6rem;
+  background: var(--grey-clr);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--red-clr);
+}
+.mycontainer{
+  max-width: 1024px;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+.section{
+  padding: 4.5rem 0 2rem;
+}
+.section-title{
+  text-align: center;
+  font-size: var(--h2-fs);
+  margin-bottom: 1rem;
+}
+.section-subtitle{
+  display: block;
+  text-align: center;
+  font-size: var(--normal-fs);
+  font-weight: var(--bold-fw);
+  color: var(--red-clr);  
+}
+.main{
+  overflow: hidden;
+}
+.grid{
+  display: grid;
+}
+.button{
+  /* display: inline-block; */
+  background-color:var(--black-clr);
+  color: var(--white-clr);
+  padding: .75rem 1.5rem;
+  border-radius: 3rem;
+  font-weight: var(--regular-fw);
+  transition: .3s;
+}
+.button:active{
+  transform: scale(0.98);
+}
+.button:hover{
+  background-color: var(--red-clr);
+}
+.button-cta{
+  border-radius: 23px 23px 0 0;
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: var(--z-fixed);
+}
+@media screen and (max-width: 768px){
+  .nav-menu{
+    position: fixed;
+    background-color: #efefef;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    padding: 4rem 0 2rem;
+    border-radius: 0 0 33px 33px;
+    box-shadow: 0 2px 4px hsla(38, 4%, 15%, .15);
+    transition: .3s;
+  }
+}
+.nav-link{
+  color: var(--black-clr);
+  font-weight: var(--medium-fw);
+  transition: .3s;
+}
+.nav-link:hover{
+  color: var(--red-clr);
+}
+.active-link{
+  position: relative;
+  font-weight: var(--medium-fw);
+  color: var(--red-clr);
+}
+.active-link::before{
+  content: '';
+  position: absolute;
+  bottom: -.75rem;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  background-color: var(--red-clr);
+  border-radius: 50%;
+}
+.activeMenu{
+  top: 0;
+}
+.scroll-header{
+  background-color: var(--white-clr);
+  box-shadow: 0 1px 4px hsla(0, 4%, 15%, .10);
+}
+.home{
+  padding-block: 100px;
+}
+.home-images{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.home-orbe{
+  width: 265px;
+  height: 294px;
+  background: var(--grey-clr);
+  border-radius: 135px 135px 0 0;
+}
+
+.home-image{
+  position: absolute;
+  width: 250px;
+  height: 340px;
+  overflow: hidden;
+  border-radius: 125px 125px 12px 12px;
+  display: flex; 
+  justify-content: center;
+  background: var(--red-clr);
+  align-items: flex-end;
+  bottom: -1.5rem;
+  box-shadow: 0 16px 32px hsla(360, 100%, 15%, 1);
+  margin-bottom: 1rem;
+}
+
+.home-image img{
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 320px) {
+  .mycontainer{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .home-orbe{
+    width: 240px;
+    height: 264px;
+  }
+  .home-image{
+    width: 220px;
+    height: 292px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .home-orbe{
+    align-self: flex-end;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .mycontainer{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .mycontainer{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
